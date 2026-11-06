@@ -2,6 +2,11 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
     compileOnly project(":nms:common")
 
+    testImplementation project(":nms:common")
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
     // https://mvnrepository.com/artifact/io.netty/netty-all
     compileOnly 'io.netty:netty-all:4.1.116.Final'
     compileOnly("com.viaversion:viaversion-common:5.3.1")

@@ -13,8 +13,13 @@ import java.lang.reflect.Constructor;
 public abstract class NmsProvider<T> {
 
     public static NmsProvider getNmsProvider(String minecraftVersion, NmsProviderConfig config) {
+        NmsVersion nmsVersion = NmsVersion.getNmsVersion(minecraftVersion);
+        if (nmsVersion == null) {
+            return null;
+        }
+
         try {
-            String versionName = NmsVersion.getNmsVersion(minecraftVersion).name();
+            String versionName = nmsVersion.name();
             Class<?> providerName = Class.forName(
                     NmsProvider.class.getPackageName() + "." + versionName + ".NmsProviderImpl"
             );
